@@ -1,4 +1,4 @@
-package lab_1.Classes;
+package lab_2.Classes;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -20,7 +20,6 @@ public class Car {
         this.plateNumber = builder.plateNumber;
         this.releaseDate = builder.releaseDate;
         this.mileage = builder.mileage;
-        this.pricePerDay = builder.pricePerDay;
     }
 
     // @Getter для кожного поля
@@ -52,7 +51,6 @@ public class Car {
                 ", plateNumber='" + plateNumber + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", mileage=" + mileage +
-                ", pricePerDay=" + pricePerDay +
                 '}';
     }
 
@@ -83,8 +81,6 @@ public class Car {
         private LocalDate releaseDate;
         private int mileage;
 
-        protected double pricePerDay;
-
         // Сеттери для кожного поля в Builder'і
         public Builder setBrand(String brand) {
             this.brand = brand;
@@ -111,16 +107,9 @@ public class Car {
             return this;
         }
 
-        public Builder setPricePerDay(double v) {
-            this.pricePerDay = v;
-            return this;
-        }
-
         // Метод build для створення об'єкта Car
         public Car build() {
             return new Car(this);
         }
-
-
     }
 }
