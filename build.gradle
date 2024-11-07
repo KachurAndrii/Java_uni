@@ -34,6 +34,18 @@ dependencies {
 //    implementation("org.glassfish.expressly:expressly:6.0.0-M1")
     implementation("org.glassfish.expressly:expressly:5.0.0")
 
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation 'org.postgresql:postgresql:42.7.4'
+
+    // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
+    implementation 'org.mongodb:mongodb-driver-sync:5.2.0'
+
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation 'com.zaxxer:HikariCP:6.0.0'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.uuid/java-uuid-generator
+    implementation 'com.fasterxml.uuid:java-uuid-generator:5.1.0'
+
 }
 
 

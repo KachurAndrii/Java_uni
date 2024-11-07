@@ -1,4 +1,4 @@
-package lab_4.Classes;
+package lab_5.Classes;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -19,10 +19,10 @@ public class Car {
     private String plateNumber; // Номер машини
     private LocalDate releaseDate; // Дата випуску
     private int mileage;        // Пробіг
-    public double pricePerDay;    // Ціна за день
+    protected double pricePerDay;    // Ціна за день
 
     // @Constructor
-    private Car(Builder builder) {
+    private Car(CarBuilder builder) {
         this.brand = builder.brand;
         this.vin = builder.vin;
         this.plateNumber = builder.plateNumber;
@@ -93,16 +93,7 @@ public class Car {
     /**
      * @Builder class for Car.
      */
-    public static class Builder {
-        private String brand;
-        private String vin;
-        private String plateNumber;
-        private LocalDate releaseDate;
-        private int mileage;
-
-        protected double pricePerDay;
-
-        public class CarBuilder {
+    public static class CarBuilder {
             @NotNull(message = "Make cannot be null")
             @Length(min = 3, max = 30, message = "Make must be between 3 and 30 characters")
             private String brand;
@@ -133,7 +124,7 @@ public class Car {
             private int mileage;
 
 
-            public CarBuilder setMake(String brand) {
+            public CarBuilder setBrand(String brand) {
                 this.brand = brand;
                 return this;
             }
@@ -188,4 +179,4 @@ public class Car {
         }
 
     }
-}
+
