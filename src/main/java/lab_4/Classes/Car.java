@@ -20,7 +20,7 @@ public class Car {
     protected double pricePerDay;    // Ціна за день
 
     // @Constructor
-    private Car(Builder builder) {
+    private Car(CarBuilder builder) {
         this.brand = builder.brand;
         this.vin = builder.vin;
         this.plateNumber = builder.plateNumber;
@@ -91,16 +91,7 @@ public class Car {
     /**
      * @Builder class for Car.
      */
-    public static class Builder {
-        private String brand;
-        private String vin;
-        private String plateNumber;
-        private LocalDate releaseDate;
-        private int mileage;
-
-        protected double pricePerDay;
-
-        public class CarBuilder {
+    public class CarBuilder {
             @NotNull(message = "Make cannot be null")
             @Length(min = 3, max = 30, message = "Make must be between 3 and 30 characters")
             private String brand;
@@ -131,7 +122,7 @@ public class Car {
             private int mileage;
 
 
-            public CarBuilder setMake(String brand) {
+            public CarBuilder SetBrand(String brand) {
                 this.brand = brand;
                 return this;
             }
@@ -186,4 +177,3 @@ public class Car {
         }
 
     }
-}
