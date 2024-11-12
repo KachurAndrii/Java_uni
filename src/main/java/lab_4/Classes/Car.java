@@ -59,6 +59,10 @@ public class Car {
         return mileage;
     }
 
+    public double getPricePerDay() {
+        return pricePerDay;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -88,10 +92,11 @@ public class Car {
         return Objects.hash(brand, vin, plateNumber, releaseDate, mileage);
     }
 
+
     /**
      * @Builder class for Car.
      */
-    public class CarBuilder {
+    public static class CarBuilder {
             @NotNull(message = "Make cannot be null")
             @Length(min = 3, max = 30, message = "Make must be between 3 and 30 characters")
             private String brand;
