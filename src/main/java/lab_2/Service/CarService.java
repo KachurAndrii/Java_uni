@@ -1,5 +1,6 @@
 package lab_2.Service;
 import lab_2.Classes.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,13 @@ import java.util.stream.Collectors;
  */
 public class CarService {
 
+    private final List<Car> cars;
+
+    public CarService(List<Car> cars) {
+
+        this.cars = cars;
+    }
+
     /**
      * Get a list of cars filtered by brand.
      *
@@ -15,7 +23,7 @@ public class CarService {
      * @param brand the brand to filter by
      * @return a list of cars of the specified brand
      */
-    public List<Car> filterCarsByBrand(List<Car> cars, String brand) {
+    public List<Car> filterCarsByBrand(String brand) {
         return cars.stream()
                 .filter(car -> car.getBrand().equalsIgnoreCase(brand))
                 .collect(Collectors.toList());
@@ -27,7 +35,7 @@ public class CarService {
      * @param cars the list of cars
      * @return a sorted list of cars by mileage
      */
-    public List<Car> sortCarsByMileage(List<Car> cars) {
+    public List<Car> sortCarsByMileage() {
         return cars.stream()
                 .sorted((car1, car2) -> Integer.compare(car1.getMileage(), car2.getMileage()))
                 .collect(Collectors.toList());
@@ -40,7 +48,7 @@ public class CarService {
      * @param mileageThreshold the minimum mileage
      * @return a list of cars with mileage greater than the specified value
      */
-    public List<Car> getCarsWithMileageGreaterThan(List<Car> cars, int mileageThreshold) {
+    public List<Car> getCarsWithMileageGreaterThan(int mileageThreshold) {
         return cars.stream()
                 .filter(car -> car.getMileage() > mileageThreshold)
                 .collect(Collectors.toList());

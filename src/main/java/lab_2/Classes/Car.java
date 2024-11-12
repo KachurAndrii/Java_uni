@@ -23,6 +23,15 @@ public class Car {
         this.pricePerDay = builder.pricePerDay;
     }
 
+    public Car(String brand, String vin, String plateNumber, LocalDate releaseDate, int mileage, double pricePerDay) {
+        this.brand = brand;
+        this.vin = vin;
+        this.plateNumber = plateNumber;
+        this.releaseDate = releaseDate;
+        this.mileage = mileage;
+        this.pricePerDay = pricePerDay;
+    }
+
     // @Getter для кожного поля
     public String getBrand() {
         return brand;
