@@ -1,4 +1,6 @@
 package lab_3.Classes;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,9 +11,11 @@ public class Car {
     private String brand;       // Марка машини
     private String vin;         // VIN код
     private String plateNumber; // Номер машини
+    @JsonFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate releaseDate; // Дата випуску
     private int mileage;        // Пробіг
-    protected double pricePerDay;    // Ціна за день
+    public double pricePerDay;    // Ціна за день
 
     // @Constructor
     private Car(Builder builder) {
@@ -21,6 +25,15 @@ public class Car {
         this.releaseDate = builder.releaseDate;
         this.mileage = builder.mileage;
         this.pricePerDay = builder.pricePerDay;
+    }
+
+    public Car(String brand, String vin, String plateNumber, LocalDate releaseDate, int mileage, double pricePerDay) {
+        this.brand = brand;
+        this.vin = vin;
+        this.plateNumber = plateNumber;
+        this.releaseDate = releaseDate;
+        this.mileage = mileage;
+        this.pricePerDay = pricePerDay;
     }
 
     // @Getter для кожного поля

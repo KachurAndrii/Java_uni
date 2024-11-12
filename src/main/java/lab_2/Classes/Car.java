@@ -23,6 +23,8 @@ public class Car {
         this.pricePerDay = builder.pricePerDay;
     }
 
+
+
     // @Getter для кожного поля
     public String getBrand() {
         return brand;
