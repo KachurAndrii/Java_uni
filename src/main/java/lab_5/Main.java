@@ -27,7 +27,7 @@ public class Main {
 
 
         CarDao carDao = new CarDao();
-        carDao.add(car);
+        //carDao.add(car);
 
         car = new Car.CarBuilder()
                 .setBrand("Toyota")
@@ -39,7 +39,7 @@ public class Main {
                 .build();
 
 
-        carDao.add(car);
+        //carDao.add(car);
 
         car = carDao.getAll().get(1);
         System.out.println(car);

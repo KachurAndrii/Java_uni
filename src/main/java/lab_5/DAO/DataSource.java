@@ -42,41 +42,41 @@ public class DataSource {
 
     public static void createTablesStructure() throws SQLException {
         String createCar = """
-                create table if not exists "Car" (
-                    "vin"         text unique, 
-                    "brand"        text, 
-                    "plateNumber" text,
-                    "releaseDate" date, 
-                    "pricePerDay" float, 
-                    "mileage"     int ,
-                    primary key ("vin")
+                create table if not exists car (
+                    vin         text unique, 
+                    brand        text, 
+                    plate_number text,
+                    release_date date, 
+                    price_per_day float, 
+                    mileage     int ,
+                    primary key (vin)
                     );
                 """;
         String createRenter = """
-                create table if not exists "Renter"
+                create table if not exists renter
                 (
-                        "documentId"      text unique,
-                        "firstName"       text,
-                        "lastName"        text,
-                        "driverLicence"   text unique,
-                        primary key ("documentId")
+                        document_id      text unique,
+                        first_name       text,
+                        last_name        text,
+                        driver_licence   text unique,
+                        primary key (document_id)
                 )
                 """;
 
         String createCarRental = """
-                create table if not exists "CarRental"
+                create table if not exists car_rental
                 (
-                        "id"                serial unique,
-                        "Car_vin"               text,
-                        "Renter_id"            text,
-                        "pickUpLocation"    text,
-                        "dropOffLocation"   text,
-                        "startDate"         date,
-                        "endDate"           date,
-                        "totalPrice"        double,
-                        primary key ("id"),
-                        foreign key ("Car_vin") references "Car" ("vin"),
-                        foreign key ("Renter_id") references "Renter" ("documentId")
+                        id                serial unique,
+                        car_vin               text,
+                        renter_id            text,
+                        pick_up_location    text,
+                        drop_off_location   text,
+                        start_date         date,
+                        end_date           date,
+                        total_price        double,
+                        primary key (id),
+                        foreign key (car_vin) references car (vin),
+                        foreign key (renter_id) references renter (document_id)
                 );
                 """;
         Connection conn = getConnection();

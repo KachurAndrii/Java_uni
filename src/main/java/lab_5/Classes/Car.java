@@ -1,4 +1,5 @@
 package lab_5.Classes;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -13,7 +14,7 @@ import static jakarta.validation.Validation.buildDefaultValidatorFactory;
  * Клас що представляє автомобілі
  */
 @Data
-public class Car {
+public class Car  implements Comparable<Car> {
     private String brand;       // Марка машини
     private String vin;         // VIN код
     private String plateNumber; // Номер машини
@@ -88,6 +89,17 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(brand, vin, plateNumber, releaseDate, mileage);
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        if (o.brand.equals(brand)) {
+            if (o.vin.equals(vin)) {
+                return this.plateNumber.compareTo(o.plateNumber);
+            }
+            return this.vin.compareTo(o.vin);
+        }
+        return this.brand.compareTo(o.brand);
     }
 
     /**

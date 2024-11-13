@@ -19,7 +19,7 @@ public class CarDao {
     }
 
     public Car add(Car car) throws SQLException {
-        String insertPerson = String.format("insert into \"%s\" (\"vin\", \"brand\", \"plateNumber\", \"releaseDate\", \"pricePerDay\", \"mileage\") values (?,?,?,?,?,?);", TABLE_NAME);
+        String insertPerson = String.format("insert into %s (vin, brand, plate_number, release_date, price_per_day, mileage) values (?,?,?,?,?,?);", TABLE_NAME);
         try (PreparedStatement ps = connection.prepareStatement(insertPerson, PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setObject(1, car.getVin());
             ps.setString(2, car.getBrand());
@@ -44,7 +44,7 @@ public class CarDao {
     }
 
     public List<Car> getAll() throws SQLException {
-        String getAll = String.format("select * from %1$s;", TABLE_NAME);
+        String getAll = String.format("select * from %s;", TABLE_NAME);
 
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(getAll);
@@ -65,9 +65,9 @@ public class CarDao {
         return new Car.CarBuilder()
                 .setBrand(rs.getString("brand"))
                 .setVin(rs.getString("vin"))
-                .setPlateNumber(rs.getString("plateNumber"))
-                .setReleaseDate(rs.getDate("releaseDate").toLocalDate())
-                .setPricePerDay(rs.getDouble("pricePerDay"))
+                .setPlateNumber(rs.getString("plate_number"))
+                .setReleaseDate(rs.getDate("release_date").toLocalDate())
+                .setPricePerDay(rs.getDouble("price_per_day"))
                 .setMileage(rs.getInt("mileage"))
                 .build();
     }
